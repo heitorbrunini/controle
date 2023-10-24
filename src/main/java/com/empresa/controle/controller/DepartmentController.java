@@ -10,34 +10,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.empresa.controle.entities.Funcionario;
-import com.empresa.controle.repository.FuncionarioRepository;
+import com.empresa.controle.entities.Department;
+import com.empresa.controle.repository.DepartmentRepository;
 
 @RestController
-@RequestMapping("/funcionarios")
-public class FuncionariosController {
+@RequestMapping("/departamentos")
+public class DepartmentController {
 	
 	@Autowired
-	private FuncionarioRepository repository;
+	private DepartmentRepository repository;
 	
 	@GetMapping	
-	public List<Funcionario> getFuncionarios() {
+	public List<Department> getFuncionarios() {
 		return repository.findAll();
 	}
 	
 	@PostMapping
-	public String postFuncionarios(Funcionario f) {
+	public String postFuncionarios(Department f) {
 		if(f != null) {
 			repository.save(f);
-			return "sucesso inserido funcionario";
+			return "sucesso inserindo Departamento";
 		}		
-		return "funcionario não inserido, tente novamente";
+		return "Department não inserido, tente novamente";
 	}
 	
 	@DeleteMapping("/{id}")
 	public String deleteFuncionariosById(@PathVariable Long id) {
 		repository.deleteById(id);
-		return "funcionario deletado com sucesso";
+		return "Departamento deletado com sucesso";
 	}
 	
 	
